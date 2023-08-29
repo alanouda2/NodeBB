@@ -45,8 +45,6 @@ function get(language, namespace) {
             throw new Error('[[error:invalid-path]]');
         }
         const data = yield fs.readFile(pathToLanguageFile, 'utf8');
-        // The next line calls a function in a module that has not been updated to TS yet
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
         const parsed = JSON.parse(data) || {};
         const result = yield plugins.hooks.fire('filter:languages.get', {
             language,
