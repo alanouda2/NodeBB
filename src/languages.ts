@@ -60,7 +60,6 @@ export async function list() {
     }
 
     const codes = await listCodes();
-
     let languages: Language[] = await Promise.all(codes.map(async (folder) => {
         const languagesPath = path.join(__dirname, '../build/public/language');
         const configPath = path.join(languagesPath, folder, 'language.json');
